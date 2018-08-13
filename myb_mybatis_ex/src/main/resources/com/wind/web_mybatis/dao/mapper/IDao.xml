@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wind.web_mybatis.dao.IDao">
+
+
+	<select id="book_resultDao" resultType="com.wind.web_mybatis.dto.BookDto">
+		select * FROM BOOK_TBL WHERE BOOK_NAME LIKE '%'|| #{param1} ||'%'  ORDER BY BOOK_NAME DESC
+	</select>
+	
+	
+	<select id="listDao" resultType="com.wind.web_mybatis.dto.ContentDto">
+		SELECT * FROM BOARD ORDER BY MID DESC
+	</select>
+	
+
+	<insert id="writeDao">
+		INSERT INTO BOARD (MID, MWRITER, MCONTENT) VALUES (BOARD_SEQ.NEXTVAL, #{param1}, #{param2})
+	</insert>
+	
+	
+	<delete id="deleteDao">
+		DELETE FROM BOARD WHERE MID = #{param1}
+	</delete>
+	
+	
+</mapper>
